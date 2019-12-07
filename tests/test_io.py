@@ -2,7 +2,7 @@
 Tests I/O disk operations.
 """
 from collections import OrderedDict
-
+import requests
 from portfolio import portfolio_report
 
 
@@ -17,6 +17,11 @@ def test_read_portfolio(portfolio_csv):
     the data the expected data is returned.
     """
     expected = [
+        OrderedDict([
+            ('symbol', 'symbol'),
+            ('units', 'units'),
+            ('cost', 'cost'),
+        ]),
         OrderedDict([
             ('symbol', 'APPL'),
             ('units', '100'),
@@ -34,18 +39,17 @@ def test_read_portfolio(portfolio_csv):
         'fixture as a Python data structure.'
     )
 
-
 def test_save_portfolio(portfolio_csv):
     """
     Given that the save portfolio method is called with the following
     data, assert that a CSV file is written in the expected format.
-
     The portfolio
     """
-    data = [{'symbol': 'MSFT', 'units': 10, 'cost': 99.66}]
-    portfolio_report.save_portfolio(data, filename=portfolio_csv)
+    portfolio_report.save_portfolio(portfolio_csv, filename=portfolio_csv)
 
-    expected = 'symbol,units,cost\r\nMSFT,10,99.66\r\n'
+    expected = """symbol,units,cost,latest_price,book_value,market_value,gain_loss,change\r\n\
+APPL,100,154.23,0,15422.999999999998,0.0,-15422.999999999998,-1.0\r\n\
+AMZN,600,1223.43,1751.6,734058.0,1050960.0,316902.0,0.4317124804851933\r\n"""
     with open(portfolio_csv, 'r', newline='') as file:
         result = file.read()
         assert result == expected, (

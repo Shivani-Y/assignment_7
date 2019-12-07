@@ -21,3 +21,19 @@ def portfolio_csv(tmp_path):
         file.writelines(lines)
 
     return filename
+
+def portfolio_out_csv(tmp_path):
+    """
+    Creates a portfolio_out.csv in a temporary folder for the
+    purposes of testing.
+    """
+    lines = [
+        ('symbol,units,cost\r\n'),
+        ('MSFT,10,99.66\r\n'),
+    ]
+
+    filename = tmp_path / 'portfolio.csv'
+    with open(filename, 'w', newline='') as file:
+        file.writelines(lines)
+
+    return filename

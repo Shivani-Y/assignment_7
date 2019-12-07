@@ -1,3 +1,13 @@
+To install this package in the shell type:
+pip install -i https://test.pypi.org/simple/ Stock-Performance-Tool-SY
+
+Once install, when you execute the package from command shell you will be prompted
+ to enter the file from which you ant to get the data and to the file you want
+ the output data to appear.
+
+ Please note if you have a incorrect ticker the program will notify you and the
+ latest price will be added as zero
+________________________________________________________________________________
 # Stock Portfolio
 
 This assignment will test the following skills:
