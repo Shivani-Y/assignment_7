@@ -1,3 +1,4 @@
+"""Setup file for the program"""
 import setuptools
 
 setuptools.setup(
