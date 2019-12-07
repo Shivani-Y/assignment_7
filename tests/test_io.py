@@ -2,7 +2,7 @@
 Tests I/O disk operations.
 """
 from collections import OrderedDict
-import requests
+#import requests
 from portfolio import portfolio_report
 
 
